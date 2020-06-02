@@ -39,6 +39,10 @@ class App extends Component {
     console.log('[App.js] Component did mount');
   }
 
+  componentDidUpdate() {
+    console.log('[App.js] componentDidUpdate');
+  }
+
   togglePersonsHandler = () => {
     const dontShow = this.state.showPerson;
     this.setState({ showPerson: !dontShow });
