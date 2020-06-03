@@ -31,6 +31,7 @@ class App extends Component {
       showPerson: false,
       showCockpit: true,
       changeCounter: 0,
+      authenticated: false,
     };
   }
 
@@ -77,6 +78,10 @@ class App extends Component {
     });
   };
 
+  loginHandler = () => {
+    this.setState({ authenticated: true });
+  };
+
   render() {
     console.log('[App.js] render');
     let persons = null;
@@ -87,6 +92,7 @@ class App extends Component {
           persons={this.state.persons}
           clicked={this.handleDeletePerson}
           changed={this.handleNameChange}
+          isAuthenticated={this.state.authenticated}
         />
       );
     }
@@ -106,6 +112,7 @@ class App extends Component {
             showPerson={this.state.showPerson}
             personsLength={this.state.persons.length}
             clicked={this.togglePersonsHandler}
+            login={this.loginHandler}
           />
         )}
         {persons}
