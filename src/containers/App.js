@@ -4,6 +4,7 @@ import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 import withClass from '../hoc/withClass';
 import Auxilliary from '../hoc/Auxilliary';
+import AuthContext from '../context/auth-context';
 
 class App extends Component {
   constructor(props) {
@@ -106,16 +107,21 @@ class App extends Component {
           }}>
           Cockpit toggle
         </button>
-        {this.state.showCockpit && (
-          <Cockpit
-            title={this.props.title}
-            showPerson={this.state.showPerson}
-            personsLength={this.state.persons.length}
-            clicked={this.togglePersonsHandler}
-            login={this.loginHandler}
-          />
-        )}
-        {persons}
+        <AuthContext.Provider
+          value={{
+            authenticated: this.state.authenticated,
+            login: this.loginHandler,
+          }}>
+          {this.state.showCockpit && (
+            <Cockpit
+              title={this.props.title}
+              showPerson={this.state.showPerson}
+              personsLength={this.state.persons.length}
+              clicked={this.togglePersonsHandler}
+            />
+          )}
+          {persons}
+        </AuthContext.Provider>
       </Auxilliary>
     );
     // React.createElement(
