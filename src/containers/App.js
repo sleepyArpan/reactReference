@@ -39,6 +39,11 @@ class App extends Component {
     console.log('[App.js] Component did mount');
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('[App.js] shouldComponentUpdate');
+    return true;
+  }
+
   componentDidUpdate() {
     console.log('[App.js] componentDidUpdate');
   }
