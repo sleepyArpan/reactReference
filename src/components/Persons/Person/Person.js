@@ -1,26 +1,25 @@
 import React, { Component } from 'react';
 import classes from './Person.css';
 import Auxilliary from '../../../hoc/Auxilliary';
+import withClass from '../../../hoc/withClass';
 
 class Person extends Component {
   render() {
     console.log('[Person.js] rendering');
     return (
       <Auxilliary>
-        <div className={classes.Person}>
-          <p onClick={this.props.click}>
-            I'm {this.props.name} and I am {this.props.age} years old
-          </p>
-          <p>{this.props.children}</p>
-          <input
-            type='text'
-            value={this.props.name}
-            onChange={this.props.changed}
-          />
-        </div>
+        <p onClick={this.props.click}>
+          I'm {this.props.name} and I am {this.props.age} years old
+        </p>
+        <p>{this.props.children}</p>
+        <input
+          type='text'
+          value={this.props.name}
+          onChange={this.props.changed}
+        />
       </Auxilliary>
     );
   }
 }
 
-export default Person;
+export default withClass(Person, classes.Person);
